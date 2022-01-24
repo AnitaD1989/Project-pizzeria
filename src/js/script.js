@@ -56,9 +56,31 @@
     constructor(id, data){
       const thisProduct = this;
 
-      console.log('New Product:', thisProduct);
+      thisProduct.id =id;
+      thisProduct.data= data;
+
+      thisProduct.renderInMenu();
+      console.log('new Product:', thisProduct);
+    }
+  
+    renderInMenu(){
+      const thisProduct = this;
+
+      /* generate HTML based on template */
+      const generatedHTML = templates.menuProduct(thisProduct.data);
+
+      /* create element using utilis.createElementFromHTML */
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+
+      /* find menu container */
+      const menuContainer = document.querySelector(select.containerOf.menu);
+
+      /* add menu */
+      menuContainer.appendChild(thisProduct.element);
     }
   }
+
+
 
   const app = {
     initMenu: function(){
