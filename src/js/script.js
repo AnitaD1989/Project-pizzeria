@@ -95,7 +95,7 @@
       const thisProduct = this;
       
       /* find the clickable trigger (the element that should react to clicking) */
-      //const clickableTrigger = document.querySelector.select.menuProduct.clickable('.product__header');
+      const clickableTrigger = document.querySelector.select.menuProduct.clickable;
 
       /* START: add event listener to clickable trigger on event click */
       //clickableTrigger.addEventListener('click', function(event)
@@ -144,7 +144,8 @@
 
       for( let productData in thisApp.data.products){
         new Product (productData, thisApp.data.products[productData]);
-    },
+    }
+  },
 
     initData: function(){
       const thisApp = this;
@@ -163,6 +164,9 @@
       thisApp.initMenu();
     },
   };
+  
+  app.init():
+}
 
 
 
