@@ -89,13 +89,13 @@
 
       for( let productData in thisApp.data.products){
         new Product (productData, thisApp.data.products[productData]);
-    }
+    },
 
     initData: function(){
       const thisApp = this;
 
       thisApp.data = dataSource;
-    },
+    }
     
     init: function() {
       const thisApp = this;
@@ -108,5 +108,7 @@
       thisApp.initMenu();
     },
   };
+
+  
 
 
