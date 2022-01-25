@@ -118,9 +118,18 @@
         /* toggle active class on thisProduct.element */
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive, thisProduct.element===activeProduct);
 
+        });
         
-        
-    });
+    initOrderForm(){
+      const thisProduct = this;
+      console.log('new form:',thisProduct );
+    }
+    
+    
+    processOrder(){
+      const thisProduct = this;
+      console.log('order:',thisProduct);
+    }
 
   }
 }
@@ -154,6 +163,7 @@
       thisApp.initMenu();
     },
   };
+
 
 
 
