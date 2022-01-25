@@ -80,6 +80,16 @@
       menuContainer.appendChild(thisProduct.element);
     }
 
+    getElements(){
+      const thisProduct = this;
+    
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+    }
+
     initAccordion(){
       const thisProduct = this;
       
@@ -96,12 +106,17 @@
         const activeProduct = document.querySelector('.product .active');
 
         /* if there is active product and it's not thisProduct.element, remove class active from it */
-        if (!thisProduct.element) {
-          activeProduct.classNames.menuProduct.wrapperActive.remove('active');
+        if (!thisProduct.element === activeProduct) {
+          thisProduct.classList.remove(classNames.menuProduct.wrapperActive);
         }
-          /* toggle active class on thisProduct.element */
-        else thisProduct.element {
-        activeProduct.classNames.menuProduct.wrapperActive.add('active');
+        else {
+          thisProduct.classList.add(classNames.menuProduct.wrapperActive);
+          }
+          
+        /* toggle active class on thisProduct.element */
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive, thisProduct.element===activeProduct);
+
+        
         
     });
 
