@@ -129,10 +129,14 @@
     processOrder(){
       const thisProduct = this;
       console.log('order:',thisProduct);
+      
+      
+      const formData = utilis.serializeFormToObject(thisProduct.form);
+      console.log('formData', formData);
     }
 
+   }
   }
-}
     
 
 
@@ -153,7 +157,7 @@
       thisApp.data = dataSource;
     }
     
-    init: function() {
+    init: function(){
       const thisApp = this;
       console.log('*** App starting ***');
       console.log('thisApp:', thisApp);
@@ -165,7 +169,7 @@
     },
   };
   
-  app.init():
+  app.init();
 }
 
 
