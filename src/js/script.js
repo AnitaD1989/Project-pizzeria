@@ -1,4 +1,4 @@
-/* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
+/* global utils, dataSource */ // eslint-disable-line no-unused-vars
 
 {
   'use strict';
@@ -93,32 +93,27 @@
 
     initAccordion(){
       const thisProduct = this;
-      
-      /* find the clickable trigger (the element that should react to clicking) */
-      const clickableTrigger = document.querySelector.select.menuProduct.clickable;
 
       /* START: add event listener to clickable trigger on event click */
       //clickableTrigger.addEventListener('click', function(event)
-        thisProduct.accordionTrigger.addEventListener('click', function(event)  {
+      thisProduct.accordionTrigger.addEventListener('click', function(event)  {
         
         /* prevent default action for event */
         event.preventDefault();
   
         /* find active product (product that has active class) */
-        const activeProduct = document.querySelector('.product .active');
+        const activeProduct = document.querySelector('.product.active');
 
         /* if there is active product and it's not thisProduct.element, remove class active from it */
-        if (!thisProduct.element === activeProduct) {
-          thisProduct.classList.remove(classNames.menuProduct.wrapperActive);
+        if (activeProduct && thisProduct.element !== activeProduct) {
+          activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
         }
-        else {
-          thisProduct.classList.add(classNames.menuProduct.wrapperActive);
-          }
-          
+        
         /* toggle active class on thisProduct.element */
-        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive, thisProduct.element===activeProduct);
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
 
-        });
+      });
+    }
         
     initOrderForm(){
       const thisProduct = this;
@@ -131,11 +126,10 @@
       console.log('order:',thisProduct);
       
       
-      const formData = utilis.serializeFormToObject(thisProduct.form);
+      const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData', formData);
     }
 
-   }
   }
     
 
@@ -148,14 +142,14 @@
 
       for( let productData in thisApp.data.products){
         new Product (productData, thisApp.data.products[productData]);
-    }
-  },
+      }
+    },
 
     initData: function(){
       const thisApp = this;
 
       thisApp.data = dataSource;
-    }
+    },
     
     init: function(){
       const thisApp = this;
