@@ -160,7 +160,7 @@
           // check if the option is default
             if(option.default == true){
               // reduce price variable
-              price -= option.price  
+              price -= option.price;  
             }
           }
           
@@ -168,19 +168,19 @@
           const optionImage = thisProduct.imageWrapper.querySelector(paramId + optionId);
           console.log('optionImage:', optionImage);
 
-          // check if the image is active and add or remove imageVisible when clicked
+          // check if the image is active and add visible when selected or remove imageVisible when not selected
           if (optionImage) {
             if (selectedOption){
-              optionImage.classList.add(classList.menuProduct.imageVisible);
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
             } else {
-              optionImage.classList.remove(classList.menuProduct.imageVisible);
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
             }
           }
         }
       }
-            // update calculated price in the HTML
-            thisProduct.priceElem.innerHTML = price;
-      }
+      // update calculated price in the HTML
+      thisProduct.priceElem.innerHTML = price;
+    }
   }
 
       
