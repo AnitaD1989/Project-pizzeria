@@ -1,7 +1,5 @@
 /* global utils, dataSource */ // eslint-disable-line no-unused-vars
 
-const { default: PreviousMap } = require("postcss/lib/previous-map");
-
 {
   'use strict';
 
@@ -91,6 +89,7 @@ const { default: PreviousMap } = require("postcss/lib/previous-map");
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -123,7 +122,7 @@ const { default: PreviousMap } = require("postcss/lib/previous-map");
     }
     
     
-    processOrder(){
+    processOrder() {
       const thisProduct = this;
       console.log('order:',thisProduct);
       
@@ -141,36 +140,50 @@ const { default: PreviousMap } = require("postcss/lib/previous-map");
         const param = thisProduct.data.params[paramId];
         console.log(paramId, param);
 
-      // for every option in this category
+        // for every option in this category
         for(let optionId in param.options) {
-      // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
           console.log(optionId, option);
 
           // check if there is param with a name of paramId in formData and if it includes optionId
-         // if(formData[paramId] && formData[paramId].includes(optionId)) {
+          // if(formData[paramId] && formData[paramId].includes(optionId)) {
            
           const selectedOption = formData[paramId] && formData[paramId].includes(optionId);
           if (selectedOption){
           // check if the option is not default
-          if(!option.default == true) {
-          // add option price to price variable
-          option.price += price;
-          }
-        }  else {
+            if(!option.default == true) {
+              // add option price to price variable
+              option.price += price;
+            }
+          }  else {
           // check if the option is default
-          if(option.default == true){
-         // reduce price variable
-          price -= option.price;
-        
+            if(option.default == true){
+              // reduce price variable
+              price -= option.price  
+            }
+          }
+          
+          // find image with the class .paramId-optionId
+          const optionImage = thisProduct.imageWrapper.querySelector(paramId + optionId);
+          console.log('optionImage:', optionImage);
+
+          // check if the image is active and add or remove imageVisible when clicked
+          if (optionImage) {
+            if (selectedOption){
+              optionImage.classList.add(classList.menuProduct.imageVisible);
+            } else {
+              optionImage.classList.remove(classList.menuProduct.imageVisible);
+            }
+          }
         }
       }
-
-       // update calculated price in the HTML
-       thisProduct.priceElem.innerHTML = price;
+            // update calculated price in the HTML
+            thisProduct.priceElem.innerHTML = price;
       }
-    }
-  
+  }
+
+      
   const app = {
     initMenu: function(){
       const thisApp = this;
@@ -198,11 +211,6 @@ const { default: PreviousMap } = require("postcss/lib/previous-map");
       thisApp.initMenu();
     },
   };
-  
+
   app.init();
 }
-
-
-
-
-
