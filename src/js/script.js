@@ -165,7 +165,7 @@
           }
           
           // find image with the class .paramId-optionId
-          const optionImage = thisProduct.imageWrapper.querySelector(paramId + optionId);
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
           console.log('optionImage:', optionImage);
 
           // check if the image is active and add visible when selected or remove imageVisible when not selected
