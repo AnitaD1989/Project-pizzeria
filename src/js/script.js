@@ -182,6 +182,10 @@
           }
         }
       }
+
+      // multiply price by amount
+      price *= thisProduct.amountWidget.value;
+      
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
@@ -190,6 +194,9 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
 
     }
   }
@@ -197,8 +204,9 @@
   class AmountWidget{
     constructor(element){
       const thisWidget = this;
-      
+
       thisWidget.getElements(element);
+      thisWidget.setValue(thisWidget.input.value);
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
@@ -211,6 +219,37 @@
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
       thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
+
+    setValue(value){
+      const thisWidget = this;
+      
+      // convert value to integer
+      const newValue = parseInt(value);
+      thisWidget.value = newValue;
+
+      // TODO: add validation 
+       
+      // check if value getting into the function differs from actual thisWidget.value and has no null
+      if (thisWidget.value !== newValue && !isNaN(newValue) && value <= settings.amountWidget.defaultMax && value >= settings.amountWidget.defaultMin){
+        thisWidget.value = newValue;
+      }
+
+
+
+
+    }
+
+    initAcions(){
+      const thisWidget = this;
+
+    }
+
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchElement(event);
     }
   }
 
