@@ -62,6 +62,7 @@
       thisProduct.renderInMenu();
       thisProduct.getElements();
       thisProduct.initAccordion();
+      thisProduct.processOrder();
       console.log('new Product:', thisProduct);
     }
   
@@ -180,6 +181,15 @@
       }
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
+    }
+  }
+
+  class AmountWidget{
+    constructor(element){
+      const thisWidget = this;
+
+      console.log('AmountWidget:', thisWidget);
+      console.log('constructor arguments:', element);
     }
   }
 
