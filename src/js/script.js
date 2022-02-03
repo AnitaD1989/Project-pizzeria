@@ -240,15 +240,37 @@
 
     }
 
-    initAcions(){
+    initActions(){
       const thisWidget = this;
+      
+      // add "change" eventListner
+      thisWidget.input.addEventListener('change', function(){
+        thisWidget.setValue();
+      });
+      
+      //add "click" EventListner 
+      thisWidget.linkDecrease.addEventListener('click', function(event){
+
+        // stop domyslna akcje 
+        event.preventDefault();
+
+        // use method setValue with argument thisWidget.value and decrease it with 1
+        thisWidget.setValue(thisWidget.value - 1);
+      });
+      
+      thisWidget.linkIncrease.addEventListener('click', function(event){
+        event.preventDefault();
+
+        // use method setValue with argument thisWidget.value and icrease it with 1
+        thisWidget.setValue(thisWidget.value + 1);
+      });
 
     }
 
     announce(){
       const thisWidget = this;
 
-      const event = new Event('updated');
+      const event = new event('updated');
       thisWidget.element.dispatchElement(event);
     }
   }
