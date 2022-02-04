@@ -64,6 +64,7 @@
       thisProduct.initAccordion();
       thisProduct.initAmountWidget();
       thisProduct.processOrder();
+      thisProduct.initActions();
       
       console.log('new Product:', thisProduct);
     }
@@ -189,6 +190,16 @@
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
+     
+    // SWITCH initActions
+    initActions() {
+      const thisProduct = this;
+      thisProduct.form.addEventListener('click', function(event) {
+        thisProduct.processOrder();
+      });
+    }
+
+
 
     initAmountWidget(){
       const thisProduct = this;
@@ -206,7 +217,8 @@
       const thisWidget = this;
 
       thisWidget.getElements(element);
-      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.setValue(thisWidget.input.value || settings.amountWidget.defaultValue);
+      thisWidget.initActions();
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
@@ -226,18 +238,15 @@
       
       // convert value to integer
       const newValue = parseInt(value);
-      thisWidget.value = newValue;
-
-      // TODO: add validation 
+      
        
       // check if value getting into the function differs from actual thisWidget.value and has no null
       if (thisWidget.value !== newValue && !isNaN(newValue) && value <= settings.amountWidget.defaultMax && value >= settings.amountWidget.defaultMin){
         thisWidget.value = newValue;
+        thisWidget.announce();
       }
 
-
-
-
+      thisWidget.input.value = thisWidget.value;
     }
 
     initActions(){
@@ -245,7 +254,7 @@
       
       // add "change" eventListner
       thisWidget.input.addEventListener('change', function(){
-        thisWidget.setValue();
+        thisWidget.setValue(thisWidget.input.value);
       });
       
       //add "click" EventListner 
@@ -270,8 +279,8 @@
     announce(){
       const thisWidget = this;
 
-      const event = new event('updated');
-      thisWidget.element.dispatchElement(event);
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
