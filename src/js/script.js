@@ -415,7 +415,10 @@
     announce(){
       const thisWidget = this;
 
-      const event = new Event('updated');
+      const event = new CostumEvent('updated',{
+        bubbles = true
+      });
+      
       thisWidget.element.dispatchEvent(event);
     }
   }
@@ -439,6 +442,10 @@
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = thisCart.element.querySelector(select.cart.productList);
+      thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
+      thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
+      thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
     }
 
     initActions(){
@@ -447,6 +454,10 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function(){
 
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+        thisCart.dom.productList.addEventListener('updated', function(){
+          thisCart.update();
+        });
+
 
       });
     }
@@ -475,6 +486,17 @@
           thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
 
         }
+        
+        // aktualizowanie html koszyka
+        for (let totalPriceCart of thisCart.dom.totalPrice){
+          totalPriceCart.innerHTML = thisCart.totalPrice;
+        }
+        
+        thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+        thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+        thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
+        thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
+  
       
       thisCart.upddate();
       }
@@ -511,6 +533,7 @@
       thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
       thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
       thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
+      
     }
 
     initAmountWidget(){
