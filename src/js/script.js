@@ -416,7 +416,7 @@
       const thisWidget = this;
 
       const event = new CostumEvent('updated',{
-        bubbles = true
+        bubbles: true
       });
       
       thisWidget.element.dispatchEvent(event);
@@ -454,12 +454,14 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function(){
 
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
-        thisCart.dom.productList.addEventListener('updated', function(){
-          thisCart.update();
-        });
-
-
       });
+      
+      thisCart.dom.productList.addEventListener('updated', function(){
+        thisCart.update();
+      });
+
+
+    
     }
 
     add(menuProduct){
@@ -498,7 +500,7 @@
         thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
   
       
-      thisCart.upddate();
+        thisCart.upddate();
       }
     }
   }
