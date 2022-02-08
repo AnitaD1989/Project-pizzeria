@@ -467,10 +467,13 @@
 
       thisCartProduct.id = menuProduct.id;
       thisCartProduct.name = menuProduct.name;
-      thisCartProduct.amount = menuProduct.amountWidget.value;
-
-    
-    
+      thisCartProduct.amount = menuProduct.value;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.params = menuProduct.params;
+      thisCartProduct.getElements(element);   
+      thisCartProduct.initAmountWidget();
+      thisCartProduct.initActions();
 
       thisCartProduct.getElements(element);
       console.log('thisCartProduct:', thisCartProduct);
@@ -485,9 +488,18 @@
       thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
       thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
       thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
+    }
 
+    initAmountWidget(){
+      const thisCartProduct = this;
 
+      thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function(){
+        thisCartProduct.amount = thisCartProduct.amountWidget.value;
+      });
 
+      thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amountWidget.value;
+      thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
 
     }
     
