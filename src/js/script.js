@@ -270,24 +270,7 @@
     addToCart() {
 
       const thisProduct = this;
-      const thisCart = this;
-
       app.cart.add(thisProduct.prepareCartProduct());
-  
-      /* generate HTML based on template */
-      const generatedHTML = templates.cartProduct(thisCart.cart);
-  
-      /* create element using utilis.createElementFromHTML */
-      thisCart.element = utils.createDOMFromHTML(generatedHTML);
-
-      const generatedDOM = thisCart.dom.productList.document.querySelector(select.containerOf.cart);
-  
-      //const cartContainer = document.querySelector(select.containerOf.cart);
-  
-      generatedDOM.appendChild(thisCart.element); 
-
-      thisCart.product.push(new CartProduct(menuProduct, generatedDOM));
-      console.log('thisCart.products:', thisCart.products);
   
     }
 
@@ -465,9 +448,14 @@
     }
 
     add(menuProduct){
-      //const thisCart = this;
-
-      console.log('adding product:', menuProduct);
+      
+      const thisCart = this;
+      
+      const generatedHTML = templates.cartProduct(menuProduct);//thisCart.data);
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      thisCart.dom.productList.appendChild(generatedDOM);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
+      thisCart.update();
     }
 
     update(){
