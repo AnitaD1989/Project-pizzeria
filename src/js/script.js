@@ -398,7 +398,7 @@
     announce(){
       const thisWidget = this;
 
-      const event = new CostumEvent('updated',{
+      const event = new CustomEvent('updated',{
         bubbles: true
       });
       
@@ -461,11 +461,11 @@
 
     update(){
       const thisCart = this;
-      const deliveryFee = settings.cart.defaultDeliveryFee;
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
       thisCart.totalNumber = 0;
-      thisCart.subtotalPrice = 0 ;
+      thisCart.subtotalPrice = 0;
 
-      for (let thisCart of thisCart.products) {
+      for (let cartProduct of thisCart.products) {
         
         thisCart.totalNumber = thisCart.totalNumber + cartProduct.amount;
         thisCart.subtotalPrice = thisCart.subtotalPrice + cartProduct.price;
@@ -477,20 +477,20 @@
           thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
 
         }
+      }
         
-        // aktualizowanie html koszyka
-        for (let totalPriceCart of thisCart.dom.totalPrice){
-          totalPriceCart.innerHTML = thisCart.totalPrice;
-        }
+      // aktualizowanie html koszyka
+      for (let totalPriceCart of thisCart.dom.totalPrice){
+        totalPriceCart.innerHTML = thisCart.totalPrice;
+      }
         
-        thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
-        thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
-        thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
-        thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+      thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
+      thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
   
       
-        thisCart.upddate();
-      }
+      thisCart.upddate();
     }
     
     remove(cartProduct){
@@ -562,7 +562,7 @@
     }
 
     initActions(){
-      const thisCartProduct = this;
+      const thisCartProduct= this;
 
       thisCartProduct.dom.edit.addEventListener('click', function(event){
         event.preventDefault();
@@ -570,11 +570,11 @@
       
       thisCartProduct.dom.remove.addEventListener('click', function(event){
         event.preventDefault();
-        thisCart.remove();
+        thisCartProduct.remove();
       });
 
-      }
     }
+  }
       
   const app = {
     initMenu: function(){
