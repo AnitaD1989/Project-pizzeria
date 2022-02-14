@@ -594,7 +594,7 @@
     initData: function(){
       const thisApp = this;
 
-      thisApp.data = dataSource;
+      thisApp.data = {};
     },
 
     initCart: function(){
