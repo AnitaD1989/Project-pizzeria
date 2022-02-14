@@ -595,6 +595,7 @@
       const thisApp = this;
 
       thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.products;
     },
 
     initCart: function(){
