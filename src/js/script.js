@@ -671,7 +671,7 @@
 
 
 
-        console.log('thisApp.Data', JSON.stringify(thisApp.Data));
+        console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
 
     initCart: function(){
