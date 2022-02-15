@@ -602,16 +602,16 @@
           return rawResponse.json();
         })
         .then(function(parsedResponse){
-          cosole.log('parsedResponse', parsedResponse);
+          console.log('parsedResponse', parsedResponse);
 
           // save parsedResponse as thisApp.data.products
           parsedResponse = thisApp.data.products;
 
           // execute initMenu method
-          thisApp = initMenu();
-        })
+          thisApp.initMenu();
+        });
 
-        console.log('thisAppData', JSON.stringify(thisAppData));
+        console.log('thisApp.Data', JSON.stringify(thisApp.Data));
     },
 
     initCart: function(){
