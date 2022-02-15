@@ -596,6 +596,22 @@
 
       thisApp.data = {};
       const url = settings.db.url + '/' + settings.db.products;
+
+      fetch(url)
+        .then(function(rawResponse){
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse){
+          cosole.log('parsedResponse', parsedResponse);
+
+          // save parsedResponse as thisApp.data.products
+          parsedResponse = thisApp.data.products;
+
+          // execute initMenu method
+          thisApp = initMenu();
+        })
+
+        console.log('thisAppData', JSON.stringify(thisAppData));
     },
 
     initCart: function(){
@@ -612,7 +628,6 @@
       console.log('settings:', settings);
       console.log('templates:', templates);
       thisApp.initData();
-      thisApp.initMenu();
       thisApp.initCart();
     },
   };
