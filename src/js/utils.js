@@ -1,5 +1,4 @@
 /*global dataSource */
-
 const utils = {}; // eslint-disable-line no-unused-vars
 
 utils.createDOMFromHTML = function(htmlString) {
@@ -54,3 +53,4 @@ Handlebars.registerHelper('joinValues', function(input, options) {
 });
 
 export default utils;
+
