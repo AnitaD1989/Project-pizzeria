@@ -1,23 +1,28 @@
-import { settings, select } from '../settings.js'
-class AmountWidget{
+import { settings, select } from '../settings.js';
+import BaseWidget from './BaseWidget.js';
+
+class AmountWidget extends BaseWidget {
   constructor(element){
+    
+    super(element, settings.amountWidget.defaultValue);
+    
     const thisWidget = this;
 
     thisWidget.getElements(element);
-    thisWidget.setValue(thisWidget.input.value || settings.amountWidget.defaultValue);
+    //thisWidget.setValue(thisWidget.dom.input.value || settings.amountWidget.defaultValue);
     thisWidget.initActions();
 
-    console.log('AmountWidget:', thisWidget);
-    console.log('constructor arguments:', element);
+    //console.log('AmountWidget:', thisWidget);
+    //console.log('constructor arguments:', element);
   }
 
-  getElements(element){
+  getElements(){
     const thisWidget = this;
   
-    thisWidget.element = element;
-    thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
-    thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
-    thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    thisWidget.dom.wrapper = element;
+    thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.amount.input);
+    thisWidget.dom.linkDecrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkDecrease);
+    thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
     
   }
 
@@ -25,28 +30,40 @@ class AmountWidget{
     const thisWidget = this;
     
     // convert value to integer
-    const newValue = parseInt(value);
+    const newValue = thisWidget.parseValue(value);
     
      
     // check if value getting into the function differs from actual thisWidget.value and has no null
-    if (thisWidget.value !== newValue && !isNaN(newValue) && value <= settings.amountWidget.defaultMax && value >= settings.amountWidget.defaultMin){
+    if (thisWidget.value !== newValue && thisWidget.isValid(newValue)){
       thisWidget.value = newValue;
       thisWidget.announce();
     }
 
-    thisWidget.input.value = thisWidget.value;
+    thisWidget.renderValue();
+  }
+
+  isValid(value){
+    return !isNaN(value) 
+    && value >= settings.amountWidget.defaultMin 
+    && value <= settings.AmountWidget.defaultMax;
+  }
+
+  renderValue(){
+    const thisWidget = this;
+
+    thisWidget.dom.input.value =thisWidget.value;
   }
 
   initActions(){
     const thisWidget = this;
     
     // add "change" eventListner
-    thisWidget.input.addEventListener('change', function(){
-      thisWidget.setValue(thisWidget.input.value);
+    thisWidget.dom.input.addEventListener('change', function(){
+      thisWidget.setValue(thisWidget.dom.input.value);
     });
     
     //add "click" EventListner 
-    thisWidget.linkDecrease.addEventListener('click', function(event){
+    thisWidget.dom.linkDecrease.addEventListener('click', function(event){
 
       // stop domyslna akcje 
       event.preventDefault();
@@ -55,7 +72,7 @@ class AmountWidget{
       thisWidget.setValue(thisWidget.value - 1);
     });
     
-    thisWidget.linkIncrease.addEventListener('click', function(event){
+    thisWidget.dom.linkIncrease.addEventListener('click', function(event){
       event.preventDefault();
 
       // use method setValue with argument thisWidget.value and icrease it with 1
@@ -71,7 +88,7 @@ class AmountWidget{
       bubbles: true
     });
     
-    thisWidget.element.dispatchEvent(event);
+    thisWidget.dom.wrapper.dispatchEvent(event);
   }
 }
 export default AmountWidget;
