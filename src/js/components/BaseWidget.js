@@ -5,24 +5,41 @@ class BaseWidget{
     thisWidget.dom = {};
     thisWidget.dom.wrapper = wrapperElement;
 
-    thisWidget.value = initialValue;
+    thisWidget.correctValue = initialValue;
 
+  }
+
+  get value(){
+    const thisWidget = this;
+
+    return thisWidget.correctValue;
+  }
+
+  set value(){
+    const thisWidget = this;
+
+    const newValue = thisWidget.parseValue(value);
   }
   
   setValue(value){
     const thisWidget = this;
     
-    // convert value to integer
     const newValue = thisWidget.parseValue(value);
     
      
-    // check if value getting into the function differs from actual thisWidget.value and has no null
-    if (thisWidget.value !== newValue && thisWidget.isValid(newValue)){
-      thisWidget.value = newValue;
+    // check if value getting into the function differs from actual thisWidget.correctValue and has no null
+    if (thisWidget.correctValue !== newValue && thisWidget.isValid(newValue)){
+      thisWidget.correctValue = newValue;
       thisWidget.announce();
     }
 
     thisWidget.renderValue();
+  }
+
+  setValue(value){
+    const thisWidget = this;
+
+    thisWidget.value = value;
   }
 
   parseValue(value){
@@ -38,7 +55,7 @@ class BaseWidget{
   renderValue(){
     const thisWidget = this;
 
-    thisWidget.dom.input.value =thisWidget.value;
+    thisWidget.dom.input.value =thisWidget.correctValue;
   }
 
   renderValue(){

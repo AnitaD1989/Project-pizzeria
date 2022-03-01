@@ -12,7 +12,7 @@ class AmountWidget extends BaseWidget {
     //thisWidget.setValue(thisWidget.dom.input.value || settings.amountWidget.defaultValue);
     thisWidget.initActions();
 
-    //console.log('AmountWidget:', thisWidget);
+    console.log('AmountWidget:', thisWidget);
     //console.log('constructor arguments:', element);
   }
 
@@ -81,14 +81,5 @@ class AmountWidget extends BaseWidget {
 
   }
 
-  announce(){
-    const thisWidget = this;
-
-    const event = new CustomEvent('updated',{
-      bubbles: true
-    });
-    
-    thisWidget.dom.wrapper.dispatchEvent(event);
-  }
 }
 export default AmountWidget;
