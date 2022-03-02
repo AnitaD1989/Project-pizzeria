@@ -46,6 +46,18 @@ class Booking {
     thisBooking.dom.hoursAmount.addEventListener('updated', function(event){
       event.preventDefault();
     });
+
+    thisBooking.datePickerWidget = new datePicker(thisBooking.dom.datePicker);
+    thisBooking.hourPickerWidget = new hourPicker(thisBooking.dom.hourPicker);
+
+    thisBooking.dom.datePicker.addEventListener('updated', function(event){
+      event.preventDefault();
+    });
+
+    thisBooking.dom.hourPicker.addEventListener('updated', function(event){
+      event.preventDefault();
+    });
+
   }
 }
 
