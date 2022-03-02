@@ -1,5 +1,7 @@
 import {settings, select, classNames, templates} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
+import DatePicker from './DatePicker.js';
+import HourPicker from './HourPicker.js';
 import utils from '../utils.js';
 
 class Booking {
@@ -26,6 +28,9 @@ class Booking {
 
     /* change the wrapper of innerHTML to generatedHTML */
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
+
+    thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
 
   }
 
