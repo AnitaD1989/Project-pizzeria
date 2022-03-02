@@ -10,6 +10,53 @@ class Booking {
 
     thisBooking.render(element);
     thisBooking.initWidgets();
+    thisBooking.getData();
+  }
+
+  getData(){
+    const thisBooking =this;
+
+    const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate);
+    const endDateParam = settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxdate);
+
+    const params = {
+      
+      booking: [
+        startDateParam,
+        endDateParam,
+      ],
+      
+      evenetsCurrent:[
+        settings.db.notRepeatParam,
+        startDateParam,
+        endDateParam,
+      ],
+      
+      eventsRepeat:[
+        settings.db.repeatParam,
+        endDateParam,
+      ],
+    };
+
+    const urls = {
+      booking:        settings.db.url + '/' + settings.db.booking + '?' + params.booking.join('&') ,
+      
+      evenetsCurrent: settings.db.url + '/' + settings.db.event   + '?' + params.evenetsCurrent.join('&'),
+      
+      eventsRepeat:   settings.db.url + '/' + settings.db.event   + '?' + params.eventsRepeat.join('&'),
+    
+    };
+
+    //console.log('getData urls', urls);
+
+    fetch(urls.booking)
+      .then(function(bookingsResponse){
+        return bookingsResponse.json();
+      })
+      .then(function(bookings){
+        console.log(bookings);
+
+      });
   }
 
   render(element){
