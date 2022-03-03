@@ -1,4 +1,4 @@
-import { settings, select, classNames } from './settings.js'
+import { settings, select, classNames } from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
@@ -16,7 +16,7 @@ import Booking from './components/Booking.js';
       
       let pageMatchingHash = thisApp.pages[0].id;
 
-      for(page of thisApp.pages){
+      for(let page of thisApp.pages){
         if(page.id == idFromHash){
           pageMatchingHash = page.id;
           break;
@@ -134,3 +134,4 @@ import Booking from './components/Booking.js';
   };
 
   app.init();
+

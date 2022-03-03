@@ -16,7 +16,7 @@ class AmountWidget extends BaseWidget {
     //console.log('constructor arguments:', element);
   }
 
-  getElements(){
+  getElements(element){
     const thisWidget = this;
   
     thisWidget.dom.wrapper = element;

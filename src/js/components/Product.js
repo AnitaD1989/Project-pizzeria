@@ -190,7 +190,7 @@ class Product {
 
     //app.cart.add(thisProduct.prepareCartProduct());
     const event = new CustomEvent('add-to-cart', {
-      bubbles = true,
+      bubbles: true,
       detail: {
         product: thisProduct,
       },
