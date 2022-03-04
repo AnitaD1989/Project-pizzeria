@@ -170,10 +170,25 @@ class Booking {
     const clickedTableBooked = clickedElm.classList.contains(classNames.booking.tableBooked);
     const idTable = clickedElm.getAttribute(settings.booking.tableIdAttribute);
 
-    
-  }
+    if (clickedTable){
+      if(!clickedTableBooked){
+        for(let table of thisBooking.dom.tables){
+          table.classList.remove(classNames.booking.tableSelecetd);
 
-  render(element){
+          thisBooking.selectedTable =[];
+        }
+        
+        clickedElm.classList.add(classList.booking.tableSelecetd);
+        thisBooking.selectedTable.push(idTable);
+        
+        } else {
+          alert('This table is already booked!')
+        }
+      }
+    }
+
+  
+    render(element){
     const thisBooking = this;
     
     /* generate HTML */
