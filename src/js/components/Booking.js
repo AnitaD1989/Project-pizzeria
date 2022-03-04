@@ -178,11 +178,11 @@ class Booking {
           thisBooking.selectedTable =[];
         }
         
-        clickedElm.classList.add(classList.booking.tableSelecetd);
+        clickedElm.classList.add(classNames.booking.tableSelecetd);
         thisBooking.selectedTable.push(idTable);
         
         } else {
-          alert('This table is already booked!')
+          alert('This table is not available, please choose another one!')
         }
       }
     }
