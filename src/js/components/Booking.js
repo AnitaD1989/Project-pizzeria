@@ -221,6 +221,10 @@ class Booking {
       thisBooking.updatedDOM();
     });
 
+    thisBooking.dom.tablesWrapper.addEventListener('click', function(event){
+      thisBooking.initTables(event);
+    });
+
   }
 }
 
