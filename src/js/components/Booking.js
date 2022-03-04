@@ -168,6 +168,9 @@ class Booking {
 
     const clickedTable = clickedElm.classList.contains(classNames.booking.table);
     const clickedTableBooked = clickedElm.classList.contains(classNames.booking.tableBooked);
+    const idTable = clickedElm.getAttribute(settings.booking.tableIdAttribute);
+
+    
   }
 
   render(element){
