@@ -162,6 +162,14 @@ class Booking {
     }
   }
 
+  initTables(event) {
+    const thisBooking = this;
+    const clickedElm = event.target;
+
+    const clickedTable = clickedElm.classList.contains(classNames.booking.table);
+    const clickedTableBooked = clickedElm.classList.contains(classNames.booking.tableBooked);
+  }
+
   render(element){
     const thisBooking = this;
     
