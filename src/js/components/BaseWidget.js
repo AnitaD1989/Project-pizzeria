@@ -5,7 +5,7 @@ class BaseWidget{
     thisWidget.dom = {};
     thisWidget.dom.wrapper = wrapperElement;
 
-    thisWidget.correctValue = initialValue;
+    thisWidget.correctValue= initialValue;
 
   }
 
@@ -17,18 +17,13 @@ class BaseWidget{
 
   set value(value){
     const thisWidget = this;
-
-    const newValue = thisWidget.parseValue(value);
-  }
-  
-  setValue(value){
-    const thisWidget = this;
     
+    // convert value to integer
     const newValue = thisWidget.parseValue(value);
     
      
-    // check if value getting into the function differs from actual thisWidget.correctValue and has no null
-    if (thisWidget.correctValue !== newValue && thisWidget.isValid(newValue)){
+    // check if value getting into the function differs from actual thisWidget.value and has no null
+    if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)){
       thisWidget.correctValue = newValue;
       thisWidget.announce();
     }
@@ -49,14 +44,9 @@ class BaseWidget{
 
   isValid(value){
     return !isNaN(value);
-    
+  
   }
 
-  renderValue(){
-    const thisWidget = this;
-
-    thisWidget.dom.input.value =thisWidget.correctValue;
-  }
 
   renderValue(){
     const thisWidget = this;

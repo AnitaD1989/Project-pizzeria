@@ -28,7 +28,7 @@ class Booking {
         endDateParam,
       ],
       
-      evenetsCurrent:[
+      eventsCurrent:[
         settings.db.notRepeatParam,
         startDateParam,
         endDateParam,
@@ -43,7 +43,7 @@ class Booking {
     const urls = {
       booking:        settings.db.url + '/' + settings.db.booking + '?' + params.booking.join('&') ,
       
-      evenetsCurrent: settings.db.url + '/' + settings.db.event   + '?' + params.evenetsCurrent.join('&'),
+      eventsCurrent: settings.db.url + '/' + settings.db.event   + '?' + params.eventsCurrent.join('&'),
       
       eventsRepeat:   settings.db.url + '/' + settings.db.event   + '?' + params.eventsRepeat.join('&'),
     
@@ -52,23 +52,23 @@ class Booking {
     //console.log('getData urls', urls);
     Promise.all([
     fetch(urls.booking),
-    fetch(urls.evenetsCurrent),
+    fetch(urls.eventsCurrent),
     fetch(urls.eventsRepeat),
     ])
       .then(function(allResponses){
         const bookingsResponse = allResponses[0];
-        const evenetsCurrentResponse = allResponses[1];
+        const eventsCurrentResponse = allResponses[1];
         const eventsRepeatResponse = allResponses[2];
 
         return Promise.all([
           bookingsResponse.json(),
-          evenetsCurrentResponse.json(),
+          eventsCurrentResponse.json(),
           eventsRepeatResponse.json(),
 
         ]);
       })
      
-      .then(function([bookings, evenetsCurrent, eventsRepeat]){
+      .then(function([bookings, eventsCurrent, eventsRepeat]){
         //console.log(bookings);
         //console.log(evenetsCurrent);
         //console.log(eventsRepeat);
@@ -129,8 +129,8 @@ class Booking {
   updateDOM(){
     const thisBooking = this;
 
-    thisBooking.date = thisBooking.datePicker.value;
-    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+    thisBooking.date = thisBooking.datePickerWidget.value;
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPickerWidget.value);
 
     let allAvailable = false;
 
@@ -190,27 +190,22 @@ class Booking {
   
     render(element){
     const thisBooking = this;
-    
+
+    const generatedHTML = templates.bookingWidget();
+
     /* generate HTML */
     thisBooking.dom = {};
     thisBooking.dom.wrapper = element;
 
-    const generatedHTML = templates.bookingWidget();
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
     
     /* create empty thisBooking.dom */
 
-    thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
-    thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.peopleAmount = element.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.hoursAmount = element.querySelector(select.booking.hoursAmount);
     
-    /* add wrapper and reference to thisBooking.dom  which is available in the argument in the method*/
-    thisBooking.dom.wrapper = element;
-
-    /* change the wrapper of innerHTML to generatedHTML */
-    thisBooking.dom.wrapper.innerHTML = generatedHTML;
-
-    thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
-    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.tablesWrapper = thisBooking.dom.wrapper.querySelector(select.containerOf.tables);
@@ -252,6 +247,36 @@ class Booking {
     });
 
   }
+
+  sendBooking(){
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.booking;
+    
+    const payload = {
+      "date": thisBooking.datePickerWidget.value,
+      "hour": thisBooking.hourPickerWidget.value,
+      "table": (!thisBooking.tableSelecetd == 0), // numer wybranego stolika (lub null jeśli nic nie wybrano), nie wiem co dalej
+      "duration": thisBooking.hoursAmountWidget.value,
+      "ppl": thisBooking.peopleAmountWidget.value,
+      "starters": [],
+      "phone": thisBooking.phone.value,
+      "address": thisBooking.address.value,
+      };
+
+    for(let prod of thisCart.products) {
+      payload.products.push(prod.getData());
+    }
+    
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+  }
+    
 }
 
 export default Booking;
