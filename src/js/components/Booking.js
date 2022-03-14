@@ -40,8 +40,10 @@ class Booking {
       ],
     };
 
+    //console.log('getData params', params);
+
     const urls = {
-      booking:        settings.db.url + '/' + settings.db.booking + '?' + params.booking.join('&') ,
+      booking:        settings.db.url + '/' + settings.db.booking + '?' + params.booking.join('&'),
       
       eventsCurrent: settings.db.url + '/' + settings.db.event   + '?' + params.eventsCurrent.join('&'),
       
@@ -64,15 +66,14 @@ class Booking {
           bookingsResponse.json(),
           eventsCurrentResponse.json(),
           eventsRepeatResponse.json(),
-
         ]);
       })
      
       .then(function([bookings, eventsCurrent, eventsRepeat]){
         //console.log(bookings);
-        //console.log(evenetsCurrent);
+        //console.log(eventsCurrent);
         //console.log(eventsRepeat);
-
+        thisBooking.parseData(bookings,eventsCurrent, eventsRepeat);
       });
   }
 
@@ -145,7 +146,7 @@ class Booking {
 
     for(let table of thisBooking.dom.tables){
       let tableId = table.getAttribute(settings.booking.tableIdAttribute);
-      if(!NaN(tableId)){
+      if(!isNaN(tableId)){
         tableId = parseInt(tableId);
       }
 
@@ -161,34 +162,8 @@ class Booking {
       }
     }
   }
-
-  initTables(event) {
-    const thisBooking = this;
-    const clickedElm = event.target;
-
-    const clickedTable = clickedElm.classList.contains(classNames.booking.table);
-    const clickedTableBooked = clickedElm.classList.contains(classNames.booking.tableBooked);
-    const idTable = clickedElm.getAttribute(settings.booking.tableIdAttribute);
-
-    if (clickedTable){
-      if(!clickedTableBooked){
-        for(let table of thisBooking.dom.tables){
-          table.classList.remove(classNames.booking.tableSelecetd);
-
-          thisBooking.selectedTable =[];
-        }
-        
-        clickedElm.classList.add(classNames.booking.tableSelecetd);
-        thisBooking.selectedTable.push(idTable);
-        
-        } else {
-          alert('This table is not available, please choose another one!')
-        }
-      }
-    }
-
   
-    render(element){
+  render(element){
     const thisBooking = this;
 
     const generatedHTML = templates.bookingWidget();
@@ -206,9 +181,12 @@ class Booking {
     
     thisBooking.dom.datePicker = element.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.allTables = document.querySelector(select.booking.floor);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.tablesWrapper = thisBooking.dom.wrapper.querySelector(select.containerOf.tables);
+
+
 
 
 
@@ -238,14 +216,39 @@ class Booking {
       event.preventDefault();
     });*/
 
-    thisBooking.dom.wrapper.addEventListener('updated', function(){
-      thisBooking.updatedDOM();
-    });
-
-    thisBooking.dom.tablesWrapper.addEventListener('click', function(event){
+    thisBooking.dom.allTables.addEventListener('updated', function(){
+      thisBooking.updateDOM();
       thisBooking.initTables(event);
-    });
+    })
 
+  }
+
+  initTables(event){
+    const thisBooking = this;
+    const clickedElm = event.target;
+
+    if(clickedElm.classList.contains('table')
+      && !clickedElm.classList.contains('booked')
+      && !clickedElm.classList.contains(classNames.booking.tableSelected)){
+        clickedElm.classList.add(classNames.booking.tableSelected);
+
+        const tableId = event.target.getAttribute(settings.booking.tableIdAttribute);
+        thisBooking.tableSelecetd = tableId;
+    
+    } else {
+      clickedElm.classList.remove(classNames.booking.tableSelected);
+    }
+
+    for (let table of thisBooking.dom.tables){
+      if(table !== clickedElm){
+        table.classList.remove(classNames.booking.tableSelected);
+      }
+    }
+
+    if (clickedElm.classList.contains(classNames.booking.tableBooked)){
+      alert('This table is already booked, please choose another one!');
+
+    }
   }
 
   sendBooking(){
@@ -264,8 +267,8 @@ class Booking {
       "address": thisBooking.address.value,
       };
 
-    for(let prod of thisCart.products) {
-      payload.products.push(prod.getData());
+    for(let starter of thisBooking.starters) {
+      payload.starters.push(starter.getData());
     }
     
     const options = {

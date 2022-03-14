@@ -45,6 +45,8 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    table: '.table',
+    floor: '.floor-plan',
   },
   nav: {
     links: '.main-nav a',
@@ -88,7 +90,7 @@ export const classNames = {
     loading: 'loading',
     tableBooked: 'booked',
     table:'table',
-    tableSelecetd:'seleceted',
+    tableSelected:'selected',
   },
   nav: {
     active: 'active',
