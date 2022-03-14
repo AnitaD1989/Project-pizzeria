@@ -268,8 +268,11 @@ class Booking {
       };
 
     for(let starter of thisBooking.starters) {
-      payload.starters.push(starter.getData());
+      if(starter.checked) {
+        payload.starters.push(starter.value);
+      }
     }
+
     
     const options = {
       method: 'POST',
@@ -278,6 +281,16 @@ class Booking {
       },
       body: JSON.stringify(payload),
     };
+
+    fetch(url, options)
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(){
+        thisBooking.makeBooked(payload.date, payload.hour, payload.duration, payload.table);
+      })
+      .catch(function(){
+      })
   }
     
 }
