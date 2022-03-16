@@ -8,7 +8,7 @@ class Booking {
   constructor(element){
     const thisBooking = this;
 
-    thisBooking.selectedTable = [];
+    thisBooking.selectedTable;
 
     thisBooking.render(element);
     thisBooking.initWidgets();
@@ -227,13 +227,13 @@ class Booking {
     const thisBooking = this;
     const clickedElm = event.target;
 
-    if(clickedElm.classList.contains('table')
-      && !clickedElm.classList.contains('booked')
+    if(clickedElm.classList.contains('table')){
+      if(!clickedElm.classList.contains('booked')
       && !clickedElm.classList.contains(classNames.booking.tableSelected)){
         clickedElm.classList.add(classNames.booking.tableSelected);
 
         const tableId = event.target.getAttribute(settings.booking.tableIdAttribute);
-        thisBooking.tableSelecetd = tableId;
+        thisBooking.selectedTable = tableId;
     
     } else {
       clickedElm.classList.remove(classNames.booking.tableSelected);
@@ -250,6 +250,8 @@ class Booking {
 
     }
   }
+}
+  
 
   sendBooking(){
     const thisBooking = this;
