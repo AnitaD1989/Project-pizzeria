@@ -29,6 +29,7 @@ export const select = {
       input: 'input.amount', // CODE CHANGED
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
+
     },
     
     datePicker: {
@@ -40,6 +41,7 @@ export const select = {
         input: 'input[type="range"]',
         output: '.output',
     },
+    carousel:'carousel',
   },
   booking: {
     peopleAmount: '.people-amount',
