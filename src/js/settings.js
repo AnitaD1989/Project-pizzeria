@@ -47,6 +47,8 @@ export const select = {
     tables: '.floor-plan .table',
     table: '.table',
     floor: '.floor-plan',
+    tableSelected:'selected',
+
   },
   nav: {
     links: '.main-nav a',
