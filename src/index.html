@@ -67,7 +67,7 @@
 
   <div id="pages">
     <section id= "home">
-      <div id="home-wrapper" class="home-wrapper container"></div>
+      <div class="home-wrapper container"></div>
     </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
@@ -79,36 +79,79 @@
 
   <script id="template-home-page" type= "teXt/x-handlebars-template">
     <!-- HOME-PAGE -->
-  <div class="boxes">
-    <div class="box item_order" href="order">
-      <p class="order_title">ORDER ONLINE></p>
+    <div class="home-page">
+      <h2 class="page_titele no-spacing">WELCOME</h2>
+
+    <div class = "home-starter">
+      <div class = "box">
+        <a href="#order" class="home-link">
+          <div class = "box-text">
+            <h2>ORDER ONLINE></h2>
+            <p> Delicious food delivered to your door</p>
+          </div>
+          <img class="box-photo" src="images/pizza-1.jpg">
+        </a>
+      </div>
+
+      <div class = "box">
+        <a href="#booking" class="home-link">
+          <div class ="box-text">
+            <h2>BOOK TABLE</h2>
+            <p>Book your place</p>
+          </div>
+          <img class="box-photo" src="images/pizza-2.jpg">
+        </a>
+      </div>
     </div>
 
-    <div class="box item_booking" href="booking">
-      <p class="booking_title">BOOK A TABLE></p>
+    <div class="opening-hours">
+      <h2> OPENING HOURS:</h2>
+      <p>TUE-SUN, 12PM - 12AM</p>
     </div>
 
-    <div class="box item_bottom">
-      <p class="bottom_tilte">OPENING HOURS></p>
-      <p class="bottom_text">TUESDAY-SUNDAY, 12PM-12AM></p>
-    </div>
-  </div>
-
-  <!--- Karuzela -->
-  <div class="slider">
-    <div class="main-carousel">
-      <div class="carousel-cell">
-        <div class= "slider-image">
-          <img src="/images/assets/pizza-3.jpg">
-        </div>
-        <div class = "slider-text">
-          <p class = "slider-text_title"> AMAZING SERVICE </p>
-          <p class = "slider-text_content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas
+    <!--- Karuzela -->
+    <div class="carousel">
+      <div class="main-carousel" data-flickity='{"cellAlign": "left", "imagesLoaded":"true", "autoPlay":"3000"}'>
+        <div class="carousel-cell">
+          <div class= "cell-img">
+            <img src="/images/pizza-3.jpg">
+          </div>
+          <div class = "cell-text">
+            <h3> AMAZING SERVICE </h3>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas
             viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.
-          </p>
-          <p class="slider-text_author">-Margaret Osborne</p>
+            </p>
+            <p class="cell-text_author">-Margaret Osborne</p>
+          </div>
+        </div>
+        
+        <div class = "carousel-cell">
+          <div class="cell-img">
+            <img src="images/pizza-1.jpg">
+          </div>
+          <div class= "cell-text">
+            <h3>Best Pizza in Town</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas
+              viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.
+            </p>
+            <p class="cell-text_author">-Anita.D</p>
+          </div>
+        </div>
 
-      
+        <div class = "carousel-cell">
+          <div class="cell-img">
+            <img src="images/pizza-5.jpg">
+          </div>
+          <div class="cell-text">
+            <h3>FRESH INGREDIENTS</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas
+              viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.
+            </p>
+            <p class="cell-text_author">-John Bally</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </script>
   
   <script id="template-booking-widget" type="text/x-handlebars-template">
