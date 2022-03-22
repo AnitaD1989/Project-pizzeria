@@ -7,6 +7,7 @@ class Home {
 
     thisHome.render(element);
     thisHome.initWidgets();
+    thisHome.initLinks();
   }
 
   render(element){
