@@ -131,12 +131,12 @@ import Home from './components/Home.js';
 
     },
 
-    initHome: function(){
+    initHome:function(){
     const thisApp = this;
     
-    const homePageWidget = document.querySelector(select.containerOf.homePage);
+    const homePage = document.querySelector(select.containerOf.homePage);
 
-    thisApp.homePage = new Home(homePageWidget);
+    thisApp.homePage = new Home(thisApp.homePage);
   },
 
 
