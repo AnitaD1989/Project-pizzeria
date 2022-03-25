@@ -24,7 +24,9 @@
     "watch": "npm-run-all build-dev -p watch:* server",
     "watch:browsersync": "browser-sync start --server dist --files \"dist/**/**/*\" --ignore \"dist/db/**/*\"",
     "watch:sass": "sass --watch src/sass:dist/css",
-    "watch:copy": "onchange \"src/**/*\" -- npm run build:copy"
+    "watch:copy": "onchange \"src/**/*\" -- npm run build:copy",
+    "lint:fix": "eslint --fix --ext .js"
+
   },
   "keywords": [],
   "author": "",
