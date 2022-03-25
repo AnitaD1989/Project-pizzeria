@@ -24,12 +24,12 @@ class Home {
   initWidgets(){
     const element = document.querySelector(select.widgets.carousel);
 
-    new Flickity (element,{
+    /*new Flickity (element,{
       //options
       autoPlay: 3000,
       prevNextButtons: false,
       imagesLoaded: true,
-    });
+    });*/
   }
 
   activatePage(pageId){

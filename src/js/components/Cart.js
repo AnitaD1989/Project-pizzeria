@@ -114,7 +114,7 @@ class Cart {
       totalNumber: thisCart.totalPrice,
       deliveryFee: thisCart.deliveryFee,
       products: [],
-    }
+    };
 
     for(let prod of thisCart.products) {
       payload.products.push(prod.getData());
