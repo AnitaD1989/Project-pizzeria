@@ -137,7 +137,7 @@ const app = {
     
     const homePage = document.querySelector(select.containerOf.homePage);
 
-    thisApp.homePage = new Home(thisApp.homePage);
+    thisApp.homePage = new Home(homePage);
   },
 
 
