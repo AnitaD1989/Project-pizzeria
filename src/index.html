@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -84,10 +84,10 @@
       <div class = "box">
         <a href="#order" class="home-link">
           <div class = "box-text">
-            <h2>ORDER ONLINE></h2>
+            <h2>ORDER ONLINE</h2>
             <p> Delicious food delivered to your door</p>
           </div>
-          <img class="box-photo" src="images/pizza-1.jpg">
+          <img class="box-photo" src="images/assets/pizza-1.jpg">
         </a>
       </div>
 
@@ -97,7 +97,7 @@
             <h2>BOOK TABLE</h2>
             <p>Book your place</p>
           </div>
-          <img class="box-photo" src="images/pizza-2.jpg">
+          <img class="box-photo" src="images/assets/pizza-2.jpg">
         </a>
       </div>
     </div>
@@ -109,10 +109,10 @@
 
     <!--- Karuzela -->
     <div class="carousel">
-     <div class="main-carousel" data-flickity='{"cellAlign": "left", "imagesLoaded": "true", "autoPlay": "3000"}'>
+     <div class="main-carousel" data-flickity='{"cellAlign": "left", "imagesLoaded": "true", "autoPlay": "true"}'>
       <div class="carousel-cell">
         <div class= "cell-img">
-           <img src="/images/pizza-3.jpg">
+           <img src="images/assets/pizza-3.jpg">
         </div>
         <div class = "cell-text">
           <h3> AMAZING SERVICE </h3>
@@ -125,7 +125,7 @@
         
       <div class = "carousel-cell">
         <div class="cell-img">
-          <img src="images/pizza-1.jpg">
+          <img src="images/assets/pizza-1.jpg">
         </div>
         <div class= "cell-text">
           <h3>Best Pizza in Town</h3>
@@ -138,7 +138,7 @@
 
       <div class = "carousel-cell">
         <div class="cell-img">
-          <img src="images/pizza-5.jpg">
+          <img src="images/assets/pizza-5.jpg">
         </div>
         <div class="cell-text">
           <h3>FRESH INGREDIENTS</h3>
@@ -153,21 +153,22 @@
 
     <!-- Photo Gallery -->
     <div class="gallery">
-      <div class="wrapper">
-        <div class="img-box">
-          <div class="gallery-img">
-            <img src="images/pizza-4.jpg">
-          </div>
+      <div class="gallery-title">
+        <h2>OUR GALLERY</h2>
+      </div>
+      <div class="img-box">
+        <div class="gallery-img">
+            <img src="images/assets/pizza-4.jpg">
           <div class ="gallery-icon">
             <a href="#like"><i class="fa-solid fa-heart"></i></a>
             <a href="#share"><i class="fa-solid fa-share-nodes"></i></a>
           </div>
-        </div>
+          </div>
+    
 
         <div class= "img-box">
           <div class="gallery-img">
-            <img src="images/pizza-5.jpg">
-          </div>
+            <img src="images/assets/pizza-5.jpg">
           <div class ="gallery-icon">
             <a href="#like"><i class="fa-solid fa-heart"></i></a>
             <a href="#share"><i class="fa-solid fa-share-nodes"></i></a>
@@ -176,8 +177,7 @@
 
         <div class = "img-box">
           <div class="gallery-img">
-            <img src="images/pizza-7.jpg">
-          </div>
+            <img src="images/assets/pizza-7.jpg">
           <div class="gallery-icon">
             <a href="#like"><i class="fa-solid fa-heart"></i></a>
             <a href="#share"><i class="fa-solid fa-share-nodes"></i></a>
@@ -186,8 +186,7 @@
 
         <div class = "img-box">
           <div class="gallery-img">
-            <img src="images/pizza-1.jpg">
-          </div>
+            <img src="images/assets/pizza-1.jpg">
           <div class="gallery-icon">
             <a href="#like"><i class="fa-solid fa-heart"></i></a>
             <a href="#share"><i class="fa-solid fa-share-nodes"></i></a>
@@ -196,8 +195,7 @@
 
         <div class = "img-box">
           <div class="gallery-img">
-            <img src="images/pizza-8.jpg">
-          </div>
+            <img src="images/assets/pizza-8.jpg">
           <div class="gallery-icon">
             <a href="#like"><i class="fa-solid fa-heart"></i></a>
             <a href="#share"><i class="fa-solid fa-share-nodes"></i></a>
@@ -206,15 +204,13 @@
 
         <div class = "img-box">
           <div class="gallery-img">
-            <img src="images/pizza-2.jpg">
-          </div>
+            <img src="images/assets/pizza-2.jpg">
           <div class="gallery-icon">
             <a href="#like"><i class="fa-solid fa-heart"></i></a>
             <a href="#share"><i class="fa-solid fa-share-nodes"></i></a>
           </div>
         </div>
       </div>
-    </div>
     <div class="footer">
       <a href="#">View more on Instagram</a>
     </div>
@@ -394,6 +390,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
+  <script src="https://kit.fontawesome.com/88d9279756.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 
