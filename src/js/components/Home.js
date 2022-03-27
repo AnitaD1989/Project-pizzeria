@@ -29,7 +29,7 @@ class Home {
       autoPlay: 3000,
       prevNextButtons: false,
       imagesLoaded: true,
-    });*/
+    }*/
   }
 
   activatePage(pageId){

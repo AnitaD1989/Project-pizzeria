@@ -86,6 +86,8 @@
   padding: 6px;
   border-radius: $radius;
   letter-spacing: 3px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 
   p {
     margin: 0;
@@ -134,7 +136,11 @@
   position:relative;
 }
 
-.gallery-img img {
+.gallery-img {
+ display: flex, inline-block;
+ padding: 5px 5px;
+ 
+  img {
   width: 193px;
   height: 193px;
   border-radius: 4px;
@@ -144,12 +150,8 @@
   &:hover img {
     opacity: 0.7;
   }
-
+ }
 }
-
-
-.gallery-img {
-  padding: 5px 5px;
 
 
   .gallery-icon a {
@@ -157,6 +159,8 @@
     opacity: 0; 
     font-size: 28px;
     display: flex inline-block;
+    color: $color-danger;
+
     z-index: 2;
   
 
@@ -165,18 +169,6 @@
     
   }
  }
-}
-
-
-
-
-
-
-    .fa-solid:hover {
-      color: $color-danger;
-      font-size: 28px;
-    }
-  
 
 
 
@@ -208,9 +200,7 @@
   }
 
   .gallery-icon {
-      font-size: 34px;
-      padding-top: 95px;
-      padding-left: 95px;
+      justify-content:center;
     }
   
 
