@@ -172,33 +172,34 @@
 }
 /* Media */
 @media screen and (max-width: 690px) {
-
   .home-starter {
-    justify-content:center;
+    justify-content: center;
     display: block;
   }
+  
   .carousel {
     justify-content: center;
+    
     .cell-text {
       display: block;
     }
   }
 
-.gallery .img-box {
-  justify-content: center;
+  .gallery .img-box {
+    justify-content: center;
 
-  .gallery img {
-    height: 250px;
-    width: 250px;
+    .gallery img {
+      height: 250px;
+      width: 250px;
+    }
   }
-}
 
-.gallery-icon {
-  justify-content: center;
-}
+  .gallery-icon {
+    justify-content: center;
+  }
   
-.gallery  .footer {
-  text-align: center;
+  .gallery  .footer {
+    text-align: center;
   }
 }
 

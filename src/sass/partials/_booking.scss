@@ -1,7 +1,7 @@
 #pages {
   > * {
     display: none;
-    }
+  }
   
   > .active {
     display: block;
@@ -176,7 +176,6 @@
         background: $color-dark;
         opacity: 0.4;
       }
-  
     }
   }
   
