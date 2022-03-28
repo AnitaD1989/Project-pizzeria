@@ -35,7 +35,7 @@
   }
   
   &__description {
-     color: lighten($color-dark, 10%);
+    color: lighten($color-dark, 10%);
   }
   
   &__wrapper {
@@ -95,7 +95,7 @@
   
   &.active {
     .product__wrapper {
-       @include accordion-open();
+      @include accordion-open();
     }
   
     .product__order, .product__images {
