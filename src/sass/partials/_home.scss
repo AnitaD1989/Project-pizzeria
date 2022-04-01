@@ -146,25 +146,25 @@
     object-fit: cover;
     display: flex;
 
-    img:hover .gallery-icon {
-      display: block;
-      opacity: 1;
-      color: $color-danger;
+    img:hover .gallery-icon a {
+      opacity:1;
+      text-align: center;
     }
   }
 }
 
-.gallery-img .gallery-icon {
+.gallery-img .gallery-icon{
   position: absolute;
-  
+  display: flex;
+  text-align: center;
 }
 
-.gallery-icon {
-  font-size: 28px;
+.gallery-icon a {
+  font-size: 34px;
   position: relative;
-  display: none;
+  margin-left: 10px;
+  color: $color-danger;
 }
-
 
 .footer a {
   color: $color-main;
