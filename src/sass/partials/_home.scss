@@ -130,39 +130,42 @@
 .gallery .container{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin: auto;
   padding-top: 60px;
   position: relative;
+}
+.gallery-icon a {
+  font-size: 34px;
+  position: relative;
+}
+
+.gallery-icon {
+  position: absolute;
+  text-align: center;
+  padding-bottom: 70px;
 }
 
 .gallery-img {
   padding: 5px 5px;
  
   img {
-    width: 193px;
-    height: 193px;
+    width: 175px;
+    height: 175px;
     border-radius: 4px;
     object-fit: cover;
     display: flex;
-
-    img:hover .gallery-icon a {
-      opacity: 1;
-      text-align: center;
-    }
   }
 }
 
-.gallery-img .gallery-icon{
-  position: absolute;
-  display: flex;
-  text-align: center;
+.gallery-img:hover .gallery-icon a{
+    opacity: 1;
+    color: blue;
 }
 
-.gallery-icon a {
-  font-size: 34px;
-  position: relative;
-  margin-left: 10px;
+.fa-heart:hover{
+  color: $color-danger;
+}
+.fa-share-nodes:hover{
   color: $color-danger;
 }
 
