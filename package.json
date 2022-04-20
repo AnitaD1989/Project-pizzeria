@@ -26,7 +26,7 @@
     "watch:sass": "sass --watch src/sass:dist/css",
     "watch:copy": "onchange \"src/**/*\" -- npm run build:copy",
     "lint:fix": "eslint --fix --ext .js",
-    "start": "node app.js"
+    "heroku-postbuild": "npm run build"
 
   },
   "keywords": [],
@@ -60,3 +60,4 @@
   }
   
 }
+
