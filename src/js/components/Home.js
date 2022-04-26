@@ -1,5 +1,4 @@
 /* Global Flickity */
-import Flickity from 'flickity';
 import {templates, classNames, select} from '../settings.js';
 
 class Home {
@@ -29,7 +28,7 @@ class Home {
     thisHome.carousel = new Flickity (element, {
       //options
       cellAlign: 'left',
-      autoPlay: true,
+      autoPlay: 3000,
       imagesLoaded: true,
     });
   }
