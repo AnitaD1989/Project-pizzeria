@@ -1,4 +1,5 @@
 /* Global Flickity */
+import Flickity from 'flickity';
 import {templates, classNames, select} from '../settings.js';
 
 class Home {
@@ -22,14 +23,15 @@ class Home {
   }
 
   initWidgets(){
-    const element = document.querySelector(select.widgets.carousel);
+    const thisHome = this;
 
-    /*new Flickity (element,{
+    const element = document.querySelector(select.widgets.carousel);
+    thisHome.carousel = new Flickity (element, {
       //options
-      autoPlay: 3000,
-      prevNextButtons: false,
+      cellAlign: 'left',
+      autoPlay: true,
       imagesLoaded: true,
-    }*/
+    });
   }
 
   activatePage(pageId){
@@ -72,6 +74,12 @@ class Home {
         thisHome.activatePage(id);
       });
     }
+  }
+
+  resizeCarousel(){
+    const thisHome = this;
+
+    thisHome.carousel.resize();
   }
 }
 

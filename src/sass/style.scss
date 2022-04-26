@@ -9,3 +9,8 @@
 @import "partials/product";
 @import "partials/booking";
 @import "partials/home";
+
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}

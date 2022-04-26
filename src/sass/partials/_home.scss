@@ -131,8 +131,8 @@
   display: flex;
   flex-wrap: wrap;
   margin: auto;
-  padding-top: 60px;
   position: relative;
+  padding-top: 20px;
 }
 
 .gallery-icon a {
@@ -189,9 +189,10 @@
 }
 /* Media */
 @media screen and (max-width: 690px) {
+
   .home-starter {
+    display: flex;
     justify-content: center;
-    display: block;
   }
   
   .carousel{

@@ -58,7 +58,10 @@ const app = {
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
       );
- 
+    }
+
+    if(pageId == 'home'){
+      thisApp.homePage.resizeCarousel();
     }
   },
 

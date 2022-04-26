@@ -42,7 +42,7 @@ export const select = {
       input: 'input[type="range"]',
       output: '.output',
     },
-    carousel:'carousel',
+    carousel:'.main-carousel',
   },
   booking: {
     peopleAmount: '.people-amount',
