@@ -37,6 +37,7 @@
     },
      
     "globals": {
-      "Handlebars": false
+      "Handlebars": false,
+      "Flickity": false
     }
 }
