@@ -70,13 +70,14 @@ class Cart {
     thisCart.totalNumber = 0;
     thisCart.subtotalPrice = 0;
 
-    for (thisCart.product of thisCart.products) {
-      thisCart.totalNumber = thisCart.totalNumber + thisCart.product.amount;
-      thisCart.subtotalPrice = thisCart.subtotalPrice + thisCart.product.price;
+    for (let cartProduct of thisCart.products) {
+      thisCart.totalNumber = thisCart.totalNumber + cartProduct.amount;
+      thisCart.subtotalPrice = thisCart.subtotalPrice + cartProduct.price;
     }
 
-    if (thisCart.totalNumber === 0){
-      thisCart.totalPrice = 0;
+    if (thisCart.totalNumber == 0){
+      thisCart.totalPrice == 0;
+      thisCart.subtotalPrice == 0;
     } else {
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
     }
