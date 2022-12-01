@@ -36,9 +36,10 @@
 }
 
 .main-nav {
-  position: absolute;
+  position: relative;
   @include flex(row, flex-start, flex-start);
   bottom: ($base-size * -8);
+  width: 100%;
 
   a {
     @extend .h2;
@@ -54,7 +55,5 @@
     &.active {
       background: lighten($color-dark, 75%);
     }
-
   }
-
 }

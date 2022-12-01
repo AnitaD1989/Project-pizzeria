@@ -60,7 +60,7 @@ const app = {
       );
     }
 
-    if(pageId === 'home'){
+    if(pageId ==='home'){
       thisApp.homePage.resizeCarousel();
     }
   },

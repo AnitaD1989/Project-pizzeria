@@ -1,6 +1,6 @@
 .cart {
   position: absolute;
-  width: 300px; // CODE CHANGED
+  width: 40%; // CODE CHANGED
   right: 0;
   top: $base-size;
   padding: ($base-size) ($base-size * 1.5);
@@ -10,8 +10,8 @@
   font-size: $base-size;
   box-shadow: 0 0 $base-size rgba(0, 0, 0, 0.2);
   z-index: 9999;
-
-  &.active {
+  
+ &.active {
     .cart__content {
       @include accordion-open();
       padding: ($base-size * 1.5) 0 0 0;
@@ -156,4 +156,17 @@
 
   }
 
+  @media (max-width: 700px){
+
+    .cart{
+      &__total-number {
+      display: none;
+
+      }
+
+      &__total-price{
+      display: none;
+      }
+    }
+  }
 }

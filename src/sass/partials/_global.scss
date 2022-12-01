@@ -1,5 +1,6 @@
 *, *::before, *::after {
   box-sizing: border-box;
+
 }
 
 body {
@@ -10,6 +11,7 @@ body {
   line-height: 1.7;
   font-weight: $font-normal;
   color: $color-dark;
+
 }
 
 .container {
@@ -17,3 +19,13 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* Media */
+@media (max-width: 700px){
+
+  body {
+  flex-direction: column;
+  text-align: center;
+}
+}
+
